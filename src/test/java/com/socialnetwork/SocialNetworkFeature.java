@@ -45,6 +45,8 @@ public class SocialNetworkFeature {
 //        Good game though. (1 minute ago)
 //        Damn! We lost! (2 minutes ago)
 
+        new Thread(() -> socialWallConsole.start()).start();
+
         LocalDateTime initialTime = LocalDateTime.of(2022, 9, 1, 12, 0, 0);
         clockService.setTime(initialTime);
         inputConsole.write("Alice -> I love the weather today");
@@ -61,6 +63,8 @@ public class SocialNetworkFeature {
         inputConsole.write("Bob");
         assertThat(outputConsole.getOutput()).isEqualTo("Good game though. (1 minute ago)");
         assertThat(outputConsole.getOutput()).isEqualTo("Damn! We lost! (2 minutes ago)");
+
+        inputConsole.write("exit");
 
     }
 
