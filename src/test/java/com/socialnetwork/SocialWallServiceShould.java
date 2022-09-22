@@ -8,8 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class SocialWallServiceShould {
@@ -41,13 +40,33 @@ class SocialWallServiceShould {
         // 2 create user on user repository
         verify(userRepository).create(userName);
         // 4 store post on post repository
-        verify(postRepository).create(userName, post, postTime);
+        verify(postRepository, times(1)).create(userName, post, postTime);
+        verify(userRepository, times(1)).get(userName);
     }
 
-//    @Test
-//    void save_post_for_existing_user() {
-//    }
-//
+    @Test
+    void save_post_for_existing_user() {
+
+        LocalDateTime postTime = LocalDateTime.of(2022, 9, 1, 12, 0, 0);
+        String userName = "Alice";
+        String post = "I love the weather today";
+
+        // 1 check if user exists
+        when(userRepository.get(userName)).thenReturn(new User(userName));
+
+        // 2 get current time
+        when(clockService.getCurrentTime()).thenReturn(postTime);
+
+        service.post(userName, post);
+
+        // 3 store post on post repository
+        verify(postRepository).create(userName, post, postTime);
+
+        verify(userRepository, times(1)).get(userName);
+
+
+    }
+
 //    @Test
 //    void return_posts_for_user() {
 //    }

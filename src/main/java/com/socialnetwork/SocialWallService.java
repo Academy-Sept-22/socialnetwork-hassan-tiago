@@ -15,7 +15,12 @@ public class SocialWallService {
     }
 
     public void post(String userName, String userPost) {
-        throw new UnsupportedOperationException();
+        User user = userRepository.get(userName);
+        if (user == null) {
+            userRepository.create(userName);
+        }
+
+        postRepository.create(userName, userPost, clockService.getCurrentTime());
     }
 
     public String returnPosts(String userName) {
