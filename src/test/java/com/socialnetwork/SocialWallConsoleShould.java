@@ -13,9 +13,12 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class SocialWallConsoleShould {
 
-    @Mock InputConsole inputConsole;
-    @Mock OutputConsole outputConsole;
-    @Mock ClockService clockService;
+    @Mock
+    InputConsole inputConsole;
+    @Mock
+    OutputConsole outputConsole;
+    @Mock
+    ClockService clockService;
     @Mock
     SocialWallService socialWallService;
 
@@ -33,7 +36,7 @@ public class SocialWallConsoleShould {
         verify(socialWallService).post("Alice", "I love the weather today");
         verify(socialWallService).post("Bob", "Damn! We lost!");
 
-        // assert that the social wall class has been called with the posting method
+    // assert that the social wall class has been called with the posting method
 
     }
 
@@ -45,9 +48,10 @@ public class SocialWallConsoleShould {
         when(inputConsole.read()).thenReturn("Alice",
                 "exit");
 
-        when(socialWallService.returnPosts("Alice")).thenReturn("I love the weather today (5 minutes ago)");
-        socialWallConsole.start();
+        when(socialWallService.returnPosts("Alice")).
+                thenReturn("I love the weather today (5 minutes ago)");
 
+        socialWallConsole.start();
 
         verify(outputConsole).write("I love the weather today (5 minutes ago)");
     }
