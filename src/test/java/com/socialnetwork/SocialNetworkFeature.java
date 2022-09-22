@@ -19,14 +19,16 @@ public class SocialNetworkFeature {
     private TestClockService clockService;
 
     private SocialWallConsole socialWallConsole;
+    private SocialWallService socialWallService;
 
     @BeforeEach
     public void setup() {
         inputConsole = new TestInputConsole();
         outputConsole = new TestOutputConsole();
         clockService = new TestClockService();
+        socialWallService = new SocialWallService();
 
-        socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, clockService);
+        socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, socialWallService);
     }
 
     @Test
