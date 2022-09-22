@@ -37,5 +37,20 @@ public class SocialWallConsoleShould {
 
     }
 
+    @Test
+    void return_a_post_from_a_user() {
+
+        SocialWallConsole socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, socialWallService);
+
+        when(inputConsole.read()).thenReturn("Alice",
+                "exit");
+
+        when(socialWallService.returnPosts("Alice")).thenReturn("I love the weather today (5 minutes ago)");
+        socialWallConsole.start();
+
+
+        verify(outputConsole).write("I love the weather today (5 minutes ago)");
+    }
+
 
 }
