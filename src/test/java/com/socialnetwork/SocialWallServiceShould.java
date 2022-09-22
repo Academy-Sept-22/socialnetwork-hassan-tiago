@@ -7,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -42,7 +41,7 @@ class SocialWallServiceShould {
         // 2 create user on user repository
         verify(userRepository).create(userName);
         // 4 store post on post repository
-        verify(postRepository).add(userName, post, postTime);
+        verify(postRepository).create(userName, post, postTime);
     }
 
 //    @Test
