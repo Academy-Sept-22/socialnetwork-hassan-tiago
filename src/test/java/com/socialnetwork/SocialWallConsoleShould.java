@@ -20,21 +20,6 @@ public class SocialWallConsoleShould {
     SocialWallService socialWallService;
 
     @Test
-    void read_a_posting_command_from_input_console_and_pass_to_social_wall() {
-
-        SocialWallConsole socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, socialWallService);
-
-        when(inputConsole.read()).thenReturn("Alice -> I love the weather today");
-
-        socialWallConsole.start();
-
-        verify(socialWallService).post("Alice", "I love the weather today");
-
-        // assert that the social wall class has been called with the posting method
-
-    }
-
-    @Test
     void read_two_posts_from_input_console_and_pass_to_social_wall() {
 
         SocialWallConsole socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, socialWallService);
