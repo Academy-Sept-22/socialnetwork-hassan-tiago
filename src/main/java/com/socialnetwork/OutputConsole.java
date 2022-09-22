@@ -1,7 +1,8 @@
 package com.socialnetwork;
 
 public class OutputConsole {
-    public String getOutput() {
+
+    public void write(String line) {
         throw new UnsupportedOperationException();
     }
 }

@@ -1,8 +1,9 @@
 package com.socialnetwork;
 
-public class InputConsole {
+public class TestOutputConsole extends OutputConsole {
 
-    public String read() {
+    public String getOutput() {
         throw new UnsupportedOperationException();
     }
+
 }

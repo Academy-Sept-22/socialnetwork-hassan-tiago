@@ -13,8 +13,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(MockitoExtension.class)
 public class SocialNetworkFeature {
 
-    private InputConsole inputConsole;
-    private OutputConsole outputConsole;
+    private TestInputConsole inputConsole;
+    private TestOutputConsole outputConsole;
 
     private TestClockService clockService;
 
@@ -22,8 +22,8 @@ public class SocialNetworkFeature {
 
     @BeforeEach
     public void setup() {
-        inputConsole = new InputConsole();
-        outputConsole = new OutputConsole();
+        inputConsole = new TestInputConsole();
+        outputConsole = new TestOutputConsole();
         clockService = new TestClockService();
 
         socialWallConsole = new SocialWallConsole(inputConsole, outputConsole, clockService);
