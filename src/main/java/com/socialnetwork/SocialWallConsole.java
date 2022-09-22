@@ -14,13 +14,15 @@ public class SocialWallConsole {
 
     public void start() {
 
-        String readFromConsole = inputConsole.read();
-        String[] partsOfUserCommand = readFromConsole.split(" -> ");
+        String readFromConsole = null;
+            do {
+                readFromConsole = inputConsole.read();
+                if (readFromConsole.contains(" -> ")) {
+                    String[] partsOfUserCommand = readFromConsole.split(" -> ");
 
-        socialWallService.post(partsOfUserCommand[0], partsOfUserCommand[1]);
-
-
-        // read an input from input console, split username and message, pass to social wall service
+                    socialWallService.post(partsOfUserCommand[0], partsOfUserCommand[1]);
+                }
+            } while (!readFromConsole.equals("exit"));
 
     }
 }
